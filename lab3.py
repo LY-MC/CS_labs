@@ -123,23 +123,39 @@ def playfair_decrypt(cipher_text, key):
     return decrypted_text
 
 
+def contains_only_romanian(text):
+    romanian_characters = "AĂÂBCDEFGHIÎJKLMNOPQRSȘTȚUVWXYZ"
+    text = text.upper()
+    for char in text:
+        if char not in romanian_characters:
+            return False
+    return True
+
+
 def main():
     while True:
         key = input("Enter the key (at least 7 characters): ")
-        if len(key) >= 7:
+        if len(key) <= 7:
+            print("Key must be at least 7 characters long.")
+        elif not contains_only_romanian(key):
+            print("Key must contain only Romanian characters.")
+        else:
+            break
+
+    while True:
+        text = input("Enter the plaintext or ciphertext: ")
+        if contains_only_romanian(text):
             break
         else:
-            print("Key must be at least 7 characters long.")
+            print("Text must contain only Romanian characters.")
 
     choice = input("Choose 'E' for encryption or 'D' for decryption: ").upper()
 
     if choice == 'E':
-        plain_text = input("Enter the plaintext: ")
-        cipher_text = playfair_encrypt(plain_text, key)
+        cipher_text = playfair_encrypt(text, key)
         print("Encrypted:", cipher_text)
     elif choice == 'D':
-        cipher_text = input("Enter the ciphertext: ")
-        decrypted_text = playfair_decrypt(cipher_text, key)
+        decrypted_text = playfair_decrypt(text, key)
         print("Decrypted:", decrypted_text)
     else:
         print("Invalid choice. Please enter 'E' for encryption or 'D' for decryption.")
