@@ -51,14 +51,20 @@ def main():
     ciphertext_b = xor_encrypt(message, key_b)
     decrypted_message_b = xor_decrypt(ciphertext_b, key_b)
 
-    print(f"Original Message: {message}")
-    print("Alice:")
-    print(f"  Ciphertext: {ciphertext_a}")
-    print(f"  Decrypted Message: {decrypted_message_a}")
-    print("Bob:")
-    print(f"  Ciphertext: {ciphertext_b}")
-    print(f"  Decrypted Message: {decrypted_message_b}")
+    print("Alice Private Key:", private_a)
+    print("Bob Private Key:", private_b)
+    print("\nAlice Public Key:", public_a)
+    print("Bob Public Key:", public_b)
+    print("\nShared Secret Key (Alice):", common_secret_a)
+    print("Shared Secret Key (Bob):", common_secret_b)
 
+    print("\nOriginal Message:", message)
+    print("Alice:")
+    print("  Ciphertext:", ciphertext_a)
+    print("  Decrypted Message:", decrypted_message_a)
+    print("Bob:")
+    print("  Ciphertext:", ciphertext_b)
+    print("  Decrypted Message:", decrypted_message_b)
 
 if __name__ == "__main__":
     main()
